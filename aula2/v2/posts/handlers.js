@@ -3,8 +3,15 @@ const router = express.Router();
 const Joi = require("joi");
 const services = require("./services");
 
-router.get("/posts", (req, res) => {
+router.get("/posts/:id", (req, res) => {
   // TODO get posts
+  req.query.author
+  res.status(200).json(posts);
+});
+
+router.get("/posts/:id", (req, res) => {
+  // TODO get posts
+  req.params.id
   res.status(200).json(posts);
 });
 

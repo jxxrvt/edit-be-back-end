@@ -1,22 +1,21 @@
-const posts = [
-  {
-    id: 1,
-    title: "express tutotial",
-    content: "lorem ipsum",
-    date: new Date("2020-04-23"),
-    tags: ["tag1", "tag2"],
-  },
-];
+const { getDb } = require("../db/mongo");
+const { get } = require("./handlers");
+const { ObjectId } = require("mongodb")
+const collection = "produtcts"
 
-function insert(post) {
-  const newPost = {
-    id: posts.length + 1,
-    ...post,
-  };
+async function insert(post) {
+  const db = await getDb();
+  const result = (await getDb()).collection("products").insertOne(post);
 
-  posts.push(newPost);
+  return (await result).insertedId;
+}
 
-  return newPost;
+function find(name) {}
+
+function getById() {
+  const db = await getDb()
+ 
+  await db.collection(collection).find()
 }
 
 module.exports = {
